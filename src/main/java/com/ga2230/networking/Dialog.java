@@ -57,6 +57,10 @@ public class Dialog {
         }
     }
 
+    public boolean isRunning() {
+        return running;
+    }
+
     public void send(String output) {
         try {
             writer.write(output);
