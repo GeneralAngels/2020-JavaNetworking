@@ -78,10 +78,10 @@ public class Dialog {
                     } catch (Exception e) {
                         System.out.println("Failed freeing client");
                     }
-                    if (onConnect != null)
-                        onConnect.onDisonnect(this);
                 }).start();
             }
+            if (onConnect != null)
+                onConnect.onDisonnect(this);
         }
     }
 
