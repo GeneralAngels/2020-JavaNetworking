@@ -30,9 +30,9 @@ public class Dialog {
      * @param onReceive The receiver callback.
      * @return The constructed dialog.
      */
-    public static Dialog connect(String ip, OnReceive onReceive) {
+    public static Dialog connect(String ip, OnReceive onReceive, OnConnect onConnect) {
         try {
-            return new Dialog(new Socket(ip, Server.PORT), onReceive);
+            return new Dialog(new Socket(ip, Server.PORT), onReceive, onConnect);
         } catch (Exception e) {
             System.out.println("Unable to connect to server");
             return null;
@@ -45,7 +45,7 @@ public class Dialog {
      * @param socket    The socker.
      * @param onReceive The receiver callback.
      */
-    public Dialog(Socket socket, OnReceive onReceive) {
+    public Dialog(Socket socket, OnReceive onReceive, OnConnect onConnect) {
         // Setup I/O
         try {
             reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -58,6 +58,8 @@ public class Dialog {
             if (reader != null && writer != null) {
                 new Thread(() -> {
                     try {
+                        if (onConnect != null)
+                            onConnect.onConnect(this);
                         // Begin listening
                         while (running) {
                             try {
@@ -76,6 +78,8 @@ public class Dialog {
                     } catch (Exception e) {
                         System.out.println("Failed freeing client");
                     }
+                    if (onConnect != null)
+                        onConnect.onDisonnect(this);
                 }).start();
             }
         }

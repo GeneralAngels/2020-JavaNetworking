@@ -40,7 +40,7 @@ public class Server {
             new Thread(() -> {
                 while (listening) {
                     try {
-                        dialogs.add(new Dialog(server.accept(), onReceive));
+                        dialogs.add(new Dialog(server.accept(), onReceive, null));
                     } catch (Exception e) {
                         System.out.println("Unable to initialize dialog - " + e.getMessage());
                     }
