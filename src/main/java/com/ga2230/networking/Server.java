@@ -3,6 +3,8 @@ package com.ga2230.networking;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 
+import static java.lang.Thread.sleep;
+
 /**
  * The server class handles client connections and kill management.
  */
@@ -43,6 +45,11 @@ public class Server {
                         dialogs.add(new Dialog(server.accept(), onReceive, null));
                     } catch (Exception e) {
                         System.out.println("Unable to initialize dialog - " + e.getMessage());
+                    }
+                    try {
+                        sleep(1000);
+                    } catch (Exception e) {
+                        System.out.println("Unable to sleep - " + e.getMessage());
                     }
                 }
             }).start();

@@ -9,6 +9,6 @@ public class Main {
         });
         Dialog.connect("127.0.0.1", (data, dialog) -> {
             System.out.println("Client - received \"" + data + "\"");
-        });
+        }, null);
     }
 }

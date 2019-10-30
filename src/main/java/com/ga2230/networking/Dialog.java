@@ -66,6 +66,7 @@ public class Dialog {
                                 if (reader.ready()) {
                                     onReceive.receive(reader.readLine(), this);
                                 }
+                                Thread.sleep(10);
                             } catch (IOException ignored) {
                             }
                         }
