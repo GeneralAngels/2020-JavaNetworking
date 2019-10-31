@@ -62,13 +62,14 @@ public class Dialog {
                             onConnect.onConnect(this);
                         // Begin listening
                         while (running) {
-                            try {
-                                if (reader.ready()) {
-                                    onReceive.receive(reader.readLine(), this);
+                            if (reader.ready()) {
+                                String received = reader.readLine();
+                                try {
+                                    onReceive.receive(received, this);
+                                } catch (Exception ignored) {
                                 }
-                                Thread.sleep(10);
-                            } catch (IOException ignored) {
                             }
+                            Thread.sleep(10);
                         }
                     } catch (Exception e) {
                         System.out.println("Unrecoverable exception: " + e.toString());
@@ -82,7 +83,7 @@ public class Dialog {
                     if (onConnect != null)
                         onConnect.onDisonnect(this);
                 }).start();
-            }else{
+            } else {
                 if (onConnect != null)
                     onConnect.onDisonnect(this);
             }
