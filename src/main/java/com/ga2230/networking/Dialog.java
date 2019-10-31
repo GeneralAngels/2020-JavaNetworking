@@ -58,6 +58,7 @@ public class Dialog {
             if (reader != null && writer != null) {
                 new Thread(() -> {
                     try {
+                        // Trigger on connect
                         if (onConnect != null)
                             onConnect.onConnect(this);
                         // Begin listening
@@ -111,6 +112,7 @@ public class Dialog {
             writer.write("\n");
             writer.flush();
         } catch (Exception ignored) {
+            kill();
         }
     }
 
