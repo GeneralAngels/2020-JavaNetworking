@@ -72,9 +72,14 @@ public class Dialog {
                             }
                             Thread.sleep(10);
                         }
+                    } catch (IOException e){
+                        if (onConnect != null)
+                            onConnect.onPipe(this);
+                        System.out.println("IO Error: " + e.toString());
                     } catch (Exception e) {
                         System.out.println("Unrecoverable exception: " + e.toString());
                     }
+
                     try {
                         socket.close();
                         System.out.println("Client freed");
@@ -83,12 +88,12 @@ public class Dialog {
                     }
                     kill();
                     if (onConnect != null)
-                        onConnect.onDisonnect(this);
+                        onConnect.onDisconnect(this);
                 }).start();
             } else {
                 kill();
                 if (onConnect != null)
-                    onConnect.onDisonnect(this);
+                    onConnect.onDisconnect(this);
             }
 
         }
