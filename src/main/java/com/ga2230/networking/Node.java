@@ -9,13 +9,26 @@ public class Node {
 
     private ArrayList<Node> slaves = new ArrayList<>();
 
+    private HashMap<String, String> variables = new HashMap<>();
+
     private HashMap<String, Command> commands = new HashMap<>();
 
     protected Node(String id) {
         this.id = id;
     }
 
-    protected void addSlave(Node slave){
+    protected void set(String name, String value) {
+        variables.put(name, value);
+    }
+
+    protected String get(String name) {
+        if (variables.containsKey(name)) {
+            return variables.get(name);
+        }
+        return null;
+    }
+
+    protected void addSlave(Node slave) {
         slaves.add(slave);
     }
 
@@ -24,7 +37,7 @@ public class Node {
     }
 
     public Node find(String name) {
-        if (name.equals("master")) {
+        if (name.equals("master") || name.equals(id)) {
             return this;
         } else {
             for (Node node : slaves) {
@@ -38,7 +51,7 @@ public class Node {
 
     public String execute(String command, String parameter) throws Exception {
         Command executable = commands.get(command);
-        if (executable!=null){
+        if (executable != null) {
             return executable.execute(parameter);
         }
         return null;
