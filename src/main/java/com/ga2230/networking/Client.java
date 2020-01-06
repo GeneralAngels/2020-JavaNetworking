@@ -8,15 +8,6 @@ public class Client {
     private BufferedReader reader;
     private BufferedWriter writer;
 
-    public static Client connect(String ip, Node master) {
-        try {
-            return new Client(new Socket(ip, Server.PORT), master);
-        } catch (Exception e) {
-            System.out.println("Unable to connect to server");
-            return null;
-        }
-    }
-
     public Client(Socket socket, Node master) {
         // Setup I/O
         try {

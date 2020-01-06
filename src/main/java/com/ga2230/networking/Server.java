@@ -5,9 +5,6 @@ import java.util.ArrayList;
 
 import static java.lang.Thread.sleep;
 
-/**
- * The server class handles client connections and kill management.
- */
 public class Server {
 
     public static final int PORT = 2230;

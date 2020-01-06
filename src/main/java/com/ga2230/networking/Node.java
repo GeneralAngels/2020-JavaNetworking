@@ -37,7 +37,7 @@ public class Node {
     }
 
     public Node find(String name) {
-        if (name.equals("master") || name.equals(id)) {
+        if (name.toLowerCase().equals("master") || name.toLowerCase().equals(id.toLowerCase())) {
             return this;
         } else {
             for (Node node : slaves) {
