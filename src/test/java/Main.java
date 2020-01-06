@@ -1,4 +1,3 @@
-import com.ga2230.networking.Dialog;
 import com.ga2230.networking.Server;
 
 public class Main {
