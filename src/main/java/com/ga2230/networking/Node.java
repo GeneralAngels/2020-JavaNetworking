@@ -5,13 +5,13 @@ import java.util.HashMap;
 
 public class Node {
 
-    private String id;
-
     private ArrayList<Node> slaves = new ArrayList<>();
 
-    private HashMap<String, String> variables = new HashMap<>();
-
     private HashMap<String, Command> commands = new HashMap<>();
+
+    protected String id;
+
+    protected HashMap<String, String> variables = new HashMap<>();
 
     protected Node(String id) {
         this.id = id;
