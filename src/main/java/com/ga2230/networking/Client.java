@@ -41,9 +41,9 @@ public class Client {
                                 }
                                 if (output != null) {
                                     writer.write(output);
-                                    writer.write("\n");
-                                    writer.flush();
                                 }
+                                writer.newLine();
+                                writer.flush();
                             }
                             Thread.sleep(10);
                         }
