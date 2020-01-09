@@ -17,33 +17,17 @@ public class Node {
         this.id = id;
     }
 
-    protected void set(String name, String value) {
-        variables.put(name, value);
-    }
 
-    protected String get(String name) {
-        if (variables.containsKey(name)) {
-            return variables.get(name);
-        }
-        return null;
-    }
-
-    protected Node enslave(Node slave) {
-        slaves.add(slave);
-        return slave;
-    }
-
-    protected Command command(String name, Command command) {
-        commands.put(name, command);
-        return command;
-    }
-
-    protected ArrayList<Node> slaves() {
+    protected ArrayList<Node> getSlaves() {
         return new ArrayList<>(slaves);
     }
 
-    protected HashMap<String, Command> commands() {
+    protected HashMap<String, Command> getCommands() {
         return new HashMap<>(commands);
+    }
+
+    public String getID() {
+        return id;
     }
 
     public Node find(String name) {
@@ -65,6 +49,27 @@ public class Node {
             return executable.execute(parameter);
         }
         return null;
+    }
+
+    protected void set(String name, String value) {
+        variables.put(name, value);
+    }
+
+    protected String get(String name) {
+        if (variables.containsKey(name)) {
+            return variables.get(name);
+        }
+        return null;
+    }
+
+    protected Node enslave(Node slave) {
+        slaves.add(slave);
+        return slave;
+    }
+
+    protected Command command(String name, Command command) {
+        commands.put(name, command);
+        return command;
     }
 
     public interface Command {
