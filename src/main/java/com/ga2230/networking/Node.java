@@ -28,12 +28,14 @@ public class Node {
         return null;
     }
 
-    protected void addSlave(Node slave) {
+    protected Node enslave(Node slave) {
         slaves.add(slave);
+        return slave;
     }
 
-    protected void addCommand(String name, Command command) {
+    protected Command command(String name, Command command) {
         commands.put(name, command);
+        return command;
     }
 
     public Node find(String name) {

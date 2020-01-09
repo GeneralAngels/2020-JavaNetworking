@@ -1,8 +1,6 @@
-import com.ga2230.networking.Client;
 import com.ga2230.networking.Node;
 import com.ga2230.networking.Server;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -25,7 +23,7 @@ public class Main {
 
         protected MyNode() {
             super("mynode");
-            addCommand("log", new Command() {
+            command("log", new Command() {
                 @Override
                 public String execute(String parameter) throws Exception {
                     System.out.println("Log: " + parameter);
