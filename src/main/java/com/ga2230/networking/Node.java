@@ -38,6 +38,14 @@ public class Node {
         return command;
     }
 
+    protected ArrayList<Node> slaves() {
+        return new ArrayList<>(slaves);
+    }
+
+    protected HashMap<String, Command> commands() {
+        return new HashMap<>(commands);
+    }
+
     public Node find(String name) {
         if (name.toLowerCase().equals("master") || name.toLowerCase().equals(id.toLowerCase())) {
             return this;
