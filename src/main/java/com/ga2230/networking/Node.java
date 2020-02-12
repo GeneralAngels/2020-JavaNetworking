@@ -42,7 +42,7 @@ public class Node {
         return null;
     }
 
-    public Tuple<String, Boolean> execute(String command, String parameter) throws Exception {
+    public Tuple<Boolean, String> execute(String command, String parameter) throws Exception {
         Command executable = commands.get(command);
         if (executable != null) {
             return executable.execute(parameter);
@@ -72,7 +72,7 @@ public class Node {
     }
 
     public interface Command {
-        Tuple<String, Boolean> execute(String parameter) throws Exception;
+        Tuple<Boolean, String> execute(String parameter) throws Exception;
     }
 
     public static class Tuple<A, B>{

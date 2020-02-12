@@ -25,7 +25,7 @@ public class Client {
                         while (running) {
                             if (reader.ready()) {
                                 String received = reader.readLine();
-                                String output = null;
+                                Node.Tuple<Boolean, String> output = null;
                                 try {
                                     String[] split = received.split(" ", 3);
                                     if (split.length >= 2) {
@@ -40,7 +40,7 @@ public class Client {
                                 } catch (Exception ignored) {
                                 }
                                 if (output != null) {
-                                    writer.write(output);
+                                    writer.write(output.getB());
                                 }
                                 writer.newLine();
                                 writer.flush();
