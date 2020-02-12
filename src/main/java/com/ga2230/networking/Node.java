@@ -17,7 +17,6 @@ public class Node {
         this.id = id;
     }
 
-
     protected ArrayList<Node> getSlaves() {
         return new ArrayList<>(slaves);
     }
@@ -43,7 +42,7 @@ public class Node {
         return null;
     }
 
-    public String execute(String command, String parameter) throws Exception {
+    public Tuple<String, Boolean> execute(String command, String parameter) throws Exception {
         Command executable = commands.get(command);
         if (executable != null) {
             return executable.execute(parameter);
@@ -73,6 +72,24 @@ public class Node {
     }
 
     public interface Command {
-        String execute(String parameter) throws Exception;
+        Tuple<String, Boolean> execute(String parameter) throws Exception;
+    }
+
+    public static class Tuple<A, B>{
+        private A a;
+        private B b;
+
+        public Tuple(A a, B b){
+            this.a = a;
+            this.b = b;
+        }
+
+        public A getA() {
+            return a;
+        }
+
+        public B getB() {
+            return b;
+        }
     }
 }
