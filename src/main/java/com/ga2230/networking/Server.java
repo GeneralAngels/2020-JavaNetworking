@@ -7,7 +7,7 @@ import static java.lang.Thread.sleep;
 
 public class Server {
 
-    public static final int PORT = 2230;
+    public static final int PORT = 5800;
     private static boolean listening = true;
     private static ServerSocket server = null;
     private static ArrayList<Client> clients = null;
